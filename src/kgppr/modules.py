@@ -11,16 +11,16 @@ class GenerateFirstSubQuery(dspy.Signature):
     """Want to retrieve an answer for a complex question that might need procedural reasoning. 
     Given the complex question, generate an initial question to solve the complex question."""
 
-    question = dspy.InputField(desc="complex question that involves multiple steps of reasoning.")
-    subquery = dspy.OutputField(desc="simple search query that we have to solve first.")
+    question = dspy.InputField(desc="complex question that involves multiple steps of reasoning to solve.")
+    subquery = dspy.OutputField(desc="an initial question to solve the complex question.")
     
 class GenerateNextSubQuery(dspy.Signature):
-    """Generate a subquery that we need next in order to solve the given complex question. You are given previous subquery and answer pairs. 
+    """Generate a question that we need next in order to solve the given complex question. You are given previous subquery and answer pairs. 
 The generated subquery should not overlap with the previous subqueries. If the question can be solved using the previous subquery and answer pairs, just return one world, 'NONE'."""
 
     question = dspy.InputField(desc="complex question that involves multiple steps of reasoning to solve.")
-    previous_qa = dspy.InputField(desc="previous subquery answer pairs.")
-    subquery = dspy.OutputField(desc="simple next search query.")
+    previous_qa = dspy.InputField(desc="previous question answer pairs.")
+    subquery = dspy.OutputField(desc="next simple question to solve the complex question.")
     
 class SolveQuestion(dspy.Signature):
     """Output an answer of the question using the subquery and answer pairs."""
