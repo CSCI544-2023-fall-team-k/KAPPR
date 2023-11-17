@@ -44,7 +44,7 @@ class KGPPR(dspy.Module):
                 subquery = self.generate_first_query(question=question).subquery
             else:
                 subquery = self.generate_next_query(question=question, previous_qa=previous_qa).subquery
-            logging.info(f"[{iter}] Sub Query: {subquery}")
+            logging.info(f"[{iter}] Question: {subquery}")
             #self.log_history()
             if 'NONE' in subquery: # for early stopping when we get all the information we need to solve the question
                 break
@@ -63,7 +63,7 @@ class KGPPR(dspy.Module):
             answer = self.generate_answer(question=subquery, context=context).answer
             #self.log_history()
             logging.info(f"[{iter}] Answer: {answer}")
-            previous_qa += f"\n[{iter}] Subquery: {subquery}\n[{iter}] Answer: {answer}\n"
+            previous_qa += f"\n[{iter}] Question: {subquery}\n[{iter}] Answer: {answer}\n"
         answer = self.solve_question(question=question, previous_qa=previous_qa).answer
         #self.log_history()
         logging.info(f"Final Answer: {answer}")

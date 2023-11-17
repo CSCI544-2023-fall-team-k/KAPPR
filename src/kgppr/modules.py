@@ -8,25 +8,25 @@ class GenerateAnswer(dspy.Signature):
     answer = dspy.OutputField(desc="often between 1 and 5 words")
 
 class GenerateFirstSubQuery(dspy.Signature):
-    """Want to retrieve an answer for a complex question that might need procedural reasoning. 
-    Given the complex question, generate an initial question to solve the complex question."""
+    """Want to answer for a complex question that might need procedural reasoning. 
+    Given the complex question, generate an initial question that is helpful to answer the complex question."""
 
-    question = dspy.InputField(desc="complex question that involves multiple steps of reasoning to solve.")
+    question = dspy.InputField(desc="complex question that might need procedural reasoning to answer.")
     subquery = dspy.OutputField(desc="an initial question to solve the complex question.")
     
 class GenerateNextSubQuery(dspy.Signature):
-    """Generate a question that we need next in order to solve the given complex question. You are given previous subquery and answer pairs. 
-The generated subquery should not overlap with the previous subqueries. If the question can be solved using the previous subquery and answer pairs, just return one world, 'NONE'."""
+    """Given the complex question, and the previous question-answer pairs, generate a next question that is helpful to answer the complex question. 
+    The next question must not overlap the previous questions. If the complex question can be answered only using the previous question-answer pairs, say "NONE"."""
 
-    question = dspy.InputField(desc="complex question that involves multiple steps of reasoning to solve.")
-    previous_qa = dspy.InputField(desc="previous question answer pairs.")
+    question = dspy.InputField(desc="complex question that might need procedural reasoning to answer.")
+    previous_qa = dspy.InputField(desc="the previous question and answer pairs")
     subquery = dspy.OutputField(desc="next simple question to solve the complex question.")
     
 class SolveQuestion(dspy.Signature):
-    """Output an answer of the question using the subquery and answer pairs."""
+    """Answer the complex question given the question and answer pairs as context."""
 
-    question = dspy.InputField(desc="complex question we want to solve.")
-    previous_qa = dspy.InputField(desc="context information.")
+    question = dspy.InputField(desc="complex question that might need procedural reasoning to answer.")
+    previous_qa = dspy.InputField(desc="the question and answer pairs as context")
     answer = dspy.OutputField(desc="often between 1 to 5 words.")
 
 class EvaluateAnswer(dspy.Signature):
