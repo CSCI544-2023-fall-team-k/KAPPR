@@ -23,7 +23,7 @@ class GenerateNextSubQuery(dspy.Signature):
     subquery = dspy.OutputField(desc="next simple question to solve the complex question.")
     
 class SolveQuestion(dspy.Signature):
-    """Answer the complex question given the question and answer pairs as context."""
+    """Answer the complex question. You are given some question and answer pairs that might be useful when answering to the complex question. If a question and answer pair is not useful, ignore it."""
 
     question = dspy.InputField(desc="complex question that might need procedural reasoning to answer.")
     previous_qa = dspy.InputField(desc="the question and answer pairs as context")
