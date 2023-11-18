@@ -144,8 +144,10 @@ class Evaluate:
         df.rename(columns={'correct': metric_name}, inplace=True)
         df.to_csv(self.outfile)
 
+        df = pd.read_csv(self.outfile, dtype=str, keep_default_na=False, index_col=0)
         # Add LM evaluated result field
         df['lm_evaluation'] = df.apply(self._evaluate_using_lm, axis=1)
+        print(df['lm_evaluation'].value_counts(normalize=True).mul(100).astype(str)+'%')
         df.to_csv(self.outfile)
                 
         if return_all_scores:
