@@ -160,4 +160,9 @@ cython_debug/
 #.idea/
 
 out.txt
+
+# below can be removed. 
+# written for debug purpose. -bk-
 resources/MetaQA
+metaqa_results.csv
+src/settings/config.py

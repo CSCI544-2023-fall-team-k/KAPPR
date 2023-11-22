@@ -23,6 +23,7 @@ class MetaQA(KGQADataSet):
                 question = ' '.join(question)
                 kg_entity_answers = []
                 for answer in answers.split("|"):
+                    answer = answer.replace('\n','')
                     kg_entity_answers.append(KGEntity(answer))
                 datasets.append(KGQAData(quesiton_id, question, kg_entity_answers))
         logging.info(f"number of parsed questions: {len(datasets)}")
