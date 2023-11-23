@@ -1,11 +1,12 @@
 import dspy
 
 class GenerateAnswer(dspy.Signature):
-    """Answer questions with short factoid answers."""
+    """Answer questions with short factoid answers.
+    Make multiple answers as much as possible, if multiple answers are asked."""
 
     question = dspy.InputField()
-    context = dspy.InputField(desc="facts that might be relevant to answer the question")
-    answer = dspy.OutputField(desc="often between 1 and 5 words")
+    context = dspy.InputField(desc="facts that might be relevant to answer the question.")
+    answer = dspy.OutputField(desc="often between 1 and 5 words and can be multiple answers.")
 
 class GenerateFirstSubQuery(dspy.Signature):
     """Want to answer for a complex question that might need procedural reasoning. 
@@ -16,7 +17,8 @@ class GenerateFirstSubQuery(dspy.Signature):
     
 class GenerateNextSubQuery(dspy.Signature):
     """Given the complex question, and the previous question-answer pairs, generate a next question that is helpful to answer the complex question. 
-    The next question must not overlap the previous questions. If the complex question can be answered only using the previous question-answer pairs, say "NONE"."""
+    If the previous answer is unknown, make an alternative question to find the ultimate answer for the original complex question.
+    If the complex question can be answered only using the previous question-answer pairs, say "NONE"."""
 
     question = dspy.InputField(desc="complex question that might need procedural reasoning to answer.")
     previous_qa = dspy.InputField(desc="the previous question and answer pairs")

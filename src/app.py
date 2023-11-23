@@ -24,16 +24,16 @@ def main(data: str, outfile: str = "evaluation_result.csv", num_test: int = 500)
         dataset = ComplexWebQ(path="resources/ComplexWebQuestions/ComplexWebQuestions_train.json")
         logging.info(f"data = ComplexWebQ")
     elif data.lower() == "MetaQA_1-hop".lower():
-        dataset = MetaQA(path="resources/MetaQA/vanilla_1-hop/qa_train.txt")
+        dataset = MetaQA(path="resources/MetaQA/vanilla_1-hop/qa_test.txt")
         logging.info(f"data = MetaQA_1-hop")
     elif data.lower() == "MetaQA_2-hop".lower():
-        dataset = MetaQA(path="resources/MetaQA/vanilla_2-hop/qa_train.txt")
+        dataset = MetaQA(path="resources/MetaQA/vanilla_2-hop/qa_test.txt")
         logging.info(f"data = MetaQA_2-hop")
     elif data.lower() == "MetaQA_3-hop".lower():
-        dataset = MetaQA(path="resources/MetaQA/vanilla_3-hop/qa_train.txt")
+        dataset = MetaQA(path="resources/MetaQA/vanilla_3-hop/qa_test.txt")
         logging.info(f"data = MetaQA_3-hop")
     else:
-        logging.info(f"Wrong data! It should be 'WebQSP' or 'mintaka'.")
+        logging.info(f"Wrong data! It should be one of them. - 'WebQSP', 'mintaka', 'ComplexWebQ', 'MetaQA_1-hop', 'MetaQA_2-hop', 'MetaQA_3-hop'")
         return
         
     logging.info(f"Num questions: {len(dataset.data)}")
