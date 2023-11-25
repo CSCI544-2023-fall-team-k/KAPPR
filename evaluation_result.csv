@@ -1,2 +1,0 @@
-,question,example_answer,pred_answer,exact_matching,lm_evaluation
-0,What state in the university of rockies which has the stegosaurus as an offical symbol located in?,"['Colorado', 'Centennial State', 'Colo', 'CO']",Colorado,True,True
