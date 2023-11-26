@@ -10,7 +10,7 @@ To mitigate these limitations, we propose Knowledge Graph Prompting using Proced
 
 2. Procedural Reasoning: The method employs multiple rounds of reasoning steps to solve a question. For each round, it uses chain-of-thought (CoT) to generate the next sub-question that needs to be addressed in a step-by-step fashion. Finally, the sub-question is solved using the Zero-Shot KG Prompting. For the next round, we utilize previous answers to generate answers for the next round. 
 
-![alt text](./images/KGPPR_logic_flow_png?raw=true)
+![alt text](https://github.com/CSCI544-2023-fall-team-k/KGPPR/blob/main/images/KGPPR_logic_flow.png?raw=true)
 
 # How to run
 1. Execution environment
