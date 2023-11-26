@@ -8,9 +8,7 @@ To mitigate these limitations, we propose Knowledge Graph Prompting using Proced
 
 1. Zero-Shot KG Prompting: Similar to RAG, the method adopts both knowledge graph retriever and LM to solve a question. First, it retrieves top-K knowledge graph triples that are relevant to the question. The retrieved knowledge graph triples are then converted into natural language and used as prompts for LM.
 
-2. Procedural Reasoning: The method employs multiple rounds of reasoning steps to solve a question. For each round, it uses chain-of-thought (CoT) to generate the next sub-question that needs to be addressed in a step-by-step fashion. Finally, the sub-question is solved using the Zero-Shot KG Prompting. For the next round, we utilize previous answers to generate answers for the next round. 
-
-![alt text](https://github.com/CSCI544-2023-fall-team-k/KGPPR/blob/main/images/KGPPR_logic_flow.png?raw=true)
+2. Procedural Reasoning: The method employs multiple rounds of reasoning steps to solve a question. For each round, it uses chain-of-thought (CoT) to generate the next sub-question that needs to be addressed in a step-by-step fashion. Finally, the sub-question is solved using the Zero-Shot KG Prompting. For the next round, we utilize previous answers to generate answers for the next round.
 
 # How to run
 1. Execution environment
@@ -41,5 +39,8 @@ To mitigate these limitations, we propose Knowledge Graph Prompting using Proced
       python src/app.py --data WebQSP --outfile webqsp_results.csv --num_test 500
       ```
       
+# The logic flow of the framework
+![alt text](https://github.com/CSCI544-2023-fall-team-k/KGPPR/blob/main/images/KGPPR_logic_flow.png?raw=true)
+
 # Reference
 - [Knowledge-Augmented Language Model Prompting for Zero-Shot Knowledge Graph Question Answering](https://browse.arxiv.org/pdf/2306.04136.pdf), by Jinheon Baek1, Alham Fikri Aji, Amir Saffari
