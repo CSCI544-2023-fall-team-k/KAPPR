@@ -39,7 +39,7 @@ To mitigate these limitations, we propose Knowledge Graph Prompting using Proced
       python src/app.py --data WebQSP --outfile webqsp_results.csv --num_test 500
       ```
       
-# The logic flow of the framework
+# Logic Flow
 ![alt text](https://github.com/CSCI544-2023-fall-team-k/KGPPR/blob/main/images/KGPPR_logic_flow.png?raw=true)
 
 # Reference
